@@ -1,0 +1,90 @@
+
+
+\setcounter{secnumdepth}{2}
+
+
+
+
+\begingroup
+%\let\clearpage\relax
+%\let\cleardoublepage\relax
+
+
+{\it Replay attack} is an approach for acquiring the unauthorized access to the automatic speaker verification (SV) system by using targets' pre-recorded speech. This work investigates the usefulness of linear prediction (LP) residual signal and modelling of glottal flow derivative (GFD) signal to counter replay attacks. In detecting replay signals the major clues lie in tracing the record and playback devices characteristics that dominantly reflect at low frequency regions due to loud speaker, and at high frequency regions due to two-stage A/D conversions. In that direction, must of the attempts try to derive the discriminative feature directly from the speech signal. In signal processing terms, the speech signal can be represented as the response of a slow time-varying vocal-tract system excited by a fast time-varying impulse like excitation source. Due to the presence of vocal tract resonances, the playback device characteristics may distort more to the spectral patterns of impulse like excitation signal then the spectral pattern of speech signal. Based on the distribution nature of the mel-scale that tightly spaced in low frequency regions and reverse in inverse mel-scale, residual mel-frequency cepstral coefficients (RMFCC) and residual inverse mel-frequency cepstral coefficients (RIMFCC) features are derived from LP residual signal and glottal flow derivative mel frequency cepstral coefficients (GFDMFCC) are derived from GFD signal. The effectiveness of these features are demonstrated on ASVspoof2017 database.
+
+In terms of equal error rate (EER), RMFCC features provide the best performance of 14.57\% and RIMFCC of 15.35\%. The fusion of RMFCC and RIMFCC features improves the performance to 10.14\%, that is comparatively better than the state-of-the-art spectral centroid magnitude coefficients (SCMC) feature performance of 11.49\% and constant Q cepstral coefficients (CQCC) of 15.12\%. The fusion of RMFCC, RIMFCC with CQCC and SCMC further improves the performance to 8.72\%. Further, the GFD signal based GFDMFCC provides an EER of 20.53\%. The fusion of GFDMFCC with CQCC and SCMC provides an EER of 8.18\%. These outcomes demonstrate the usefulness of excitation source information for developing countermeasures to replay attacks. 
+
+% 
+% {\it Replay attack} is an approach for acquiring the unauthorized access to the automatic speaker verification (SV) system by using targets' pre-recorded speech. 
+% %The extended reserach works over last few decades on SV, made the voice biometrics technology considerably mature, efficient, convenient and low-cost solution. To make the SV systems publicly available for widespread comercial applications, the security of such systems must be guaranteed. The SV systems are  more vulnerable to replay attacks, as it is very easy to create, no signal processing knowledge require, only require a high quality record and replay device, which can be easily available at nominal price. This attracts the research community to develop countermeasures to replay attacks. 
+% In detecting replay signals the major clues lie in tracing the record and playback devices characteristics that dominantly reflect at low frequency regions due to loud speaker, and at high frequency regions due to two-stage A/D conversions. In that direction, must of the attempts try to derive the discriminative feature directly from the speech signal. From the speech production point of view, a voiced speech signal is the output of slow time varying vocal tract system, excited by a fast time varying impulse like signal. Due to the presence of vocal tract resonances, the playback device characteristics may distort more to the spectral patterns of impulse like excitation signal then the spectral pattern of speech signal. In this work, we investigates the usefulness of linear prediction (LP) residual signal and modelling of flow derivative (GFD) signal to counter replay attacks. Based on the distribution nature of the mel-scale that tightly spaced in low frequency regions and reverse in inverse mel-scale, residual mel-frequency cepstral coefficients (RMFCC) and residual inverse mel-frequency cepstral coefficients (RIMFCC) features are derived from LP residual signal and glottal flow derivative mel frequency cepstral coefficients (GFDMFCC) are derived from GFD signal. The effectiveness of these features are demonstrated on ASVspoof2017 database.
+% 
+% %The initial study is made on deciding the suitable prediction order. 
+% In terms of equal error rate (EER), RMFCC features provide the best performance of 14.57\% and RIMFCC of 15.35\%.
+% %from $10^{th}$ order LP analysis. 
+% %These results show that residual signals effectively capture the low frequency distortions with higher order LP analysis and vice versa. The higher performance in case of RMFCC features may due to the significant distortion from loud speakers. 
+% The fusion of RMFCC and RIMFCC features improves the performance to 10.14\%, that is comparatively better than the state-of-the-art spectral centroid magnitude coefficients (SCMC) feature performance of 11.49\% and constant Q cepstral coefficients (CQCC) of 15.12\%. 
+% %The fusion of RMFCC and RIMFCC features together with SCMC provides 9.54\% and with CQCC provides 9.34\%. Finally, 
+% The fusion of RMFCC, RIMFCC with CQCC and SCMC further improves the performance to 8.72\%. Further, the GFD signal based GFDMFCC provides an EER of 20.53\%. 
+% %The fusion of GFDMFCC with CQCC provides 9.23\% and with SCMC provides 9.85\%. Finally 
+% The fusion of GFDMFCC with CQCC and SCMC provides an EER of 8.18\%. 
+% %The results demonstrate that, even if the performance of GFDMFCC is poor but the overall performance improved when combine with state of the art speech based features. 
+% These outcomes demonstrate the usefulness of processing LP residual signals and modelling of GFD signals to counter replay attacks.
+% 
+% 
+% 
+% 
+% 
+% 
+% This observation shows, the feature derived from speech signals have contained more complementary information with the features derived from GFD signals then the features derived from LP residual signal. 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% Automatic speaker verification (ASV) is a task of validating the claimed identity through machine by using the information available in claimants speech samples. The extended reserach works over last few decades on speaker verification technology made the Automatic speaker verification (ASV) considerably mature,efficient, convenient, low-cost and reliable solution to biometric person authentication. ASV technology is finding its way into a growing array of commercial products and services. The ASV systems are often employed for remote access (without humans supervision), or through telephone channel, provoke the chance of spoof attacks, where an impostor can immitate any target by providing later’s false speech samples. Spoofing can be done in four ways like impersonation, voice conversion, speech synthesis and replay attacks. Replay attack is very easy to create, no signal processing knowledge require, only require a high quality record and replay device, which can be easily available at nominal price. This attracts the research community to develop countermeasures to replay attacks. In detecting replay signals the major clues lie in tracing the record and playback devices characteristics that dominantly reflect at low frequency regions due to loud speaker, and at high frequency regions due to two-stage A/D conversions. Unlike speech, the spectral pattern of the impulse-like linear prediction (LP) residual signal is spread across entire frequency range, and so conjectured to be more useful. Based on the distribution nature of the mel-scale that tightly spaced in low frequency regions and reverse in inverse mel-scale, residual mel-frequency cepstral coefficients (RMFCC) and residual inverse mel-frequency cepstral coefficients (RIMFCC) features are used as the representative features.
+% 
+% 
+% 
+% 
+% In that direction most of the attempts try to capture the trace of the playback device characteristics by using spectral related information, that remain almost intact in replay signals, due to the presence of high energy formants, resulting higher error in replay attacks detection task. In this work, we explore the use of linear prediction (LP) residual signal and glottal flow derivative (GFD) signals to counter replay attacks. The LP residual obtained by substracting the dominant energy (Resonances) from the speech signal and the GFD signal is obtained from the speech signal by deconvoling the vocal tract system responce using complex cepstrum decomposition method. 
+% 
+% In detecting replay signals the major clues lie in tracing the record and playback devices characteristics that dominantly reflect at low frequency regions due to loud speaker, and at high frequency regions due to two-stage A/D conversions. Unlike speech, the spectral pattern of the impulse-like linear prediction (LP) residual signal is spread across entire frequency range, and so conjectured to be more useful. Based on the distribution nature of the mel-scale that tightly spaced in low frequency regions and reverse in inverse mel-scale, residual mel-frequency cepstral coefficients (RMFCC) and residual inverse mel-frequency cepstral coefficients (RIMFCC) features are used as the representative features.
+% 
+% 
+% 
+% We observed that, as compared to spectral related vocal-tract features, the parametric representation of the LP residual and GFD signals shows relatively more robustness against replay attacks. Based on the distribution nature of the mel-scale that tightly spaced in low frequency regions and reverse in inverse mel-scale, residual mel-frequency cepstral coefficients (RMFCC) and residual inverse mel-frequency cepstral coefficients (RIMFCC) features are used as the representative features. The effectiveness of these features is demonstrated on ASVspoof2017 database.
+% 
+% The initial study is made on deciding the suitable prediction order. In terms of equal error rate (EER), RMFCC features provide the best performance of 14.57\% from $20^{th}$ order LP analysis and RIMFCC of 15.35\% from $10^{th}$ order LP analysis. These results show that residual signals effectively capture the low frequency distortions with higher order LP analysis and vice versa. The higher performance in case of RMFCC features may due to the significant distortion from loud speakers. The fusion of RMFCC and RIMFCC features further improves the performance to 10.14\%, that is comparatively better than the state-of-the-art spectral centroid magnitude coefficients (SCMC) feature performance of 11.49\%. Finally, the fusion of RMFCC and RIMFCC features together with SCMC provides 9.54\%. These outcomes demonstrate the usefulness of processing LP residual signals to counter replay attacks.
+% 
+% 
+% In future, we aim to model the LP residual
+% signal explicitly and develop countermeasures to playback
+% attacks
+% 
+% 
+% 
+% the SV system an acceptable authentication system for public use, like voice biomatrics used to authenticate
+% bank transactions. The SV systems are often employed for remote access (without humans supervision), or through
+% telephone channel, provoke the chance of spoof attacks, where an impostor can immitate any target by providing
+% later’s false speech samples. The present work deals with developing spoof resistant SV system. Spoof attacks can be
+% possible in four ways, i.e. impersonation, record and replay, speech synthesis and voice conversion. A study on threat
+% accessement reveals that spoofing through playback attacks is easily accessible and provoke higher false acceptance
+% rate, encouraging the researchers for giving wider attention. Althogh, successful methods have been proposed in
+% literature, but the reliability of the SV system against playback attacks still remains a concern. In this work we
+% aim to find a well discriminative feature to distinguish the playback signal by using signal
+% processing knowledge. In this work we explore the use of linear prediction (LP) residual signal with proper LP order to detect the playback attacks.
+% 
+% We observed that, as compared to spectral related vocal-tract features, the parametric representation of the LP residual signal
+% shows relatively more robustness against playback attacks. On ASVspoof2017 database using residual inverse mel filter cepstral
+% coefficients(RIMFCC) with 10 LP order gave an EER of 7.18 in development set and an EER of 16.20 in evaluation set. When
+% RIMFCC is combined in feature level with conventional residual mel filter cepstral coefficients(RMFCC) with 10 LP order gave
+% an EER of 11.01 in development set and an EER of 10.81 in evaluation set. Hence the features derived from LP residual with
+% proper LP order can be very much useful to detect playback signals.
+% 
+
+
+\endgroup
+

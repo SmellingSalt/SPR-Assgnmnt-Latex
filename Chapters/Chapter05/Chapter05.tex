@@ -1,0 +1,109 @@
+
+\chapter{Dynamics Analysis of Surface Texture in Dry Reciprocating Content}
+\chaptermark{Dynamics Analysis of Surface Texture in Dry Reciprocating Content}
+\HRule \\[-0.5cm] % Horizontal line
+
+\label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{\emph{\textbf{Chapter5:} Dynamics Analysis of Surface Texture in Dry Reciprocating Contact}} 
+
+\newpage
+
+\subsection*{5.4.2 \quad Analysis of Stick-Slip Behaviour}
+\setcounter{equation}{15}~\cite{mishra2018lp}
+\begin{equation}
+    M\Ddot{Y}+KY=KX_{0}\cos \omega t
+\end{equation}
+
+\begin{equation}
+    Y(t)=\underbrace{ C_{1}\cos \Omega_{n}t + C_{2}\sin \Omega_{n}t} _\text{Complementary function}+ \underbrace{\frac{X_{0} \cos \omega t}{\Bigg[1-\bigg(\frac{\omega}{\Omega_{n}}\bigg)^{2}\Bigg]}}_\text{Particular solution}
+\end{equation}
+\begin{equation}
+    \Delta F=K(X-Y)-\mu N
+\end{equation}
+\setcounter{equation}{0}
+\begin{equation}
+\begin{aligned}
+     M\Ddot{Y}+KY + \sum_{i=1}^{n}\mu_{i}N_{i}~\mbox{sgn}(\dot Y-\dot y_{i})&=KX_{0}\cos \omega t\\
+     m_{1}\Dot{y_{1}}+k_{1}y_{1}+\mu_{1}N_{1} ~\mbox{sgn}(\dot y_{1}-\dot Y)&= 0\\
+                                                                    &\vdotswithin{=}\\
+     m_{n}\Dot{y_{n}}+k_{n}y_{n}+\mu_{n}N_{n} ~\mbox{sgn}(\dot y_{n}-\dot Y)&= 0
+     \end{aligned}
+\end{equation}
+\begin{equation}
+F=\mu N \mbox{sgn}(\dot Y)
+\end{equation}
+\begin{equation}
+    ~\mbox{sgn}(\dot Y):= 
+    \begin{cases}
+    -1 &\text{if $\dot Y < 0$}\\
+    0 &\text{if $\dot Y = 0$}\\
+    1 &\text{if $\dot Y > 0$}\\
+\end{cases}
+\end{equation}
+
+\begin{equation}\tag{B-2}
+    \begin{aligned}
+    a=\frac{r_{b}(s-h)}{\sqrt{s(s-2h)}}\\
+    b=\frac{h(s-h)}{s-2h}\\
+    y_{0}=\frac{h^{2}}{s-2h}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}\tag{B-3}
+    V=\pi \frac{a^{2}}{b^{2}} \int_{y_{0}}^{b} (b^{2}-y^{2})~\mbox{dy}
+\end{equation}
+
+\begin{equation}\tag{B-4}
+    V=\frac{\pi r_{b}h}{3} \frac{(2r_{b}\tan \theta - h)}{\tan \theta}
+\end{equation}
+
+\begin{equation}\tag{B-5}
+    V=\frac{2}{3}\pi r_{b}^{2}h
+\end{equation}
+\begin{equation}\tag{B-6}
+    S=2\pi \int_{y_{0}}^{b}x\sqrt{1+\Bigg(\frac{dx}{dy}\Bigg)^{2}}dy
+\end{equation}
+\begin{equation}\tag{B-7}
+    S=\frac{2 \pi a}{b^{2}} \int_{y_{0}}^{b}\sqrt{b^{4}+(a^{2}-b^{2})y^{2}}~dy
+\end{equation}
+
+\begin{equation}\tag{B-8}
+S=\frac{\pi}{b^{2}e} \Bigg\{b^{2}[ea^{2}+b^{2}\mbox{ln}(eab+ab)]-y_{0}ea\sqrt{(eay_{0})^{2}+b^{4}}\Bigg\}-\frac{\pi}{b^{2}e} \Bigg\{b^{4}\mbox{ln}(y_{0}ea+\sqrt{(eay_{0})^{2}+b^{4}})\Bigg\}
+\end{equation}
+
+\begin{equation}\tag{B-9}
+    \frac{dV}{dt}=-\frac{D}{\rho}\int \Vec{\nabla}C~ d\Vec{S}
+\end{equation}
+
+
+\section*{C.1 \quad Governing Differential equations}
+
+\begin{equation*}
+m_{1}\ddot{x}_{1}+C_{1}(\dot{x}_{1}-\dot{x}_{2})+K_{1}(x_{1}-x_{2})+m_{1}g\sin\theta=0
+\end{equation*}
+\begin{equation*}
+m_{2}\ddot{x}_{2}-C_{1}(\dot{x}_{1}-\dot{x}_{2})-K_{1}(x_{1}-x_{2})-C_{2}(\dot{x}_{4}-\dot{x}_{3})-K_{2}(x_{4}-x_{3})+m_{2}g\sin\theta=0
+\end{equation*}
+\begin{equation}\tag{C-1}
+m_{3}\ddot{x}_{3}+C_{2}(\dot{x}_{4}-\dot{x}_{3})+K_{2}(x_{4}-x_{3})+m_{3}g\sin\theta +F=0
+\end{equation}
+\begin{center}
+\begin{equation}\tag{C-2}
+M=
+  \begin{bmatrix}
+    m_{1} & 0 & 0 \\
+    0&m_{2} & 0\\
+    0&0&m_{3}
+  \end{bmatrix}
+  ,\quad\quad
+  K=
+  \begin{bmatrix}
+   K &-K & 0 \\
+    -K&0&K\\
+    0&K&-K
+  \end{bmatrix}
+\end{equation}
+\end{center}
+where $K_{1}=K_{2}=K$.
+

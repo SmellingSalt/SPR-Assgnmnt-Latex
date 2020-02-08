@@ -1,0 +1,111 @@
+
+\chapter{Delivered System Description }
+\chaptermark{ Delivered System Description }
+\HRule \\[-0.5cm] % Horizontal line
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+\lhead{\emph{\textbf{Chapter3:} Delivered System Description }} % This is for the header on each page - perhaps a shortened title
+
+%----------------------------------------------------------------------------------------
+%	SECTIONS
+%----------------------------------------------------------------------------------------
+\section{Database Description}
+The whole dataset is subdivided into two parts, i.e. training data and testing data. The training data consists of 11 different language speech data. These languages are American English, CREOL, Cantonese-Chinese, Farsi, Georgian, Korean, Mandarin, Russia, Spanish, Turkey, and Vietnamese. The amount of speech data available in each language is given in table~\ref{Data_amount}. The training data is extracted from multiple corpora, these are OGI-multilingual, NIST 1996, 2003, 2005 LREs, NIST 2004, 2005, 2006, 2008 speaker recognition evaluations (SREs) and NIST 2007 LRE supplementary training data. The test data are extracted from NIST 2009 Evaluation set, which has 3 evaluation conditions, i.e 30 sec, 10 sec and 3 sec.
+
+\begin{table}[ht!]
+\centering
+\caption{Speech data available in each language}
+\label{Data_amount}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Language name} & \textbf{Approx. duration of speech data} \\ \hline
+American English & 26 hours \\ \hline
+Creol & 27 hours \\ \hline
+Cantonese-Chinese & 26 hours \\ \hline
+Farsi & 20 hours \\ \hline
+Gorgian & 26 hours \\ \hline
+Korean & 10 hours \\ \hline
+Mandarin & 15 hours \\ \hline
+Russia & 20 hours \\ \hline
+Spanish & 14 hours \\ \hline
+Turkey & 24 hours \\ \hline
+Vietnamese & 18 hours \\ \hline
+\end{tabular}
+\end{table}
+\section{System Description}
+\subsection{GMM Based System}
+As discussed in section~\ref{gmm_sc} of chapter  1, the same procedure is followed to develop the GMM based system. MATLAB environment is used to develop the system. First, the SDC feature vectors of 56 dimensions (including $C_{0}$, performed CMVN language-wise) each, are extracted from the speech signal, then the GMM of 512 clusters are used to model the feature vectors of each language. The performance obtained using all three testing conditions is tabulated in table ~\ref{gmm_sys}.
+
+\begin{table}[ht!]
+\centering
+\caption{GMM based system performance}
+\label{gmm_sys}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Performance \\ Measure\end{tabular} & \multicolumn{1}{c|}{30 sec} & \multicolumn{1}{c|}{10 sec} & \multicolumn{1}{c|}{3 sec} \\ \hline
+$EER_{avg}$ & 32.1 & 39.2 & 43.3 \\ \hline
+$C_{avg}$ & 30.5 & 37.9 & 42.1 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Identification\\ Accuracy\end{tabular} & 56 & 42.1 & 23 \\ \hline
+\end{tabular}
+\end{table}
+\subsection{GMM-UBM Based System}
+As discussed in section~\ref{cgmmubm} of chapter  1, the same procedure is followed to develop the GMM-UBM based system. MATLAB environment is used to develop the system. First, the SDC feature vectors of 56 dimensions (including $C_{0}$, performed CMVN language-wise) each, are extracted from the speech signal, then the UBM (cluster size 512) was built using the feature vectors of approx. 2-hour data of each language. Then the training feature vectors of each language were adapted with the UBM to obtain adapt Models for each language. The performance obtained using all three testing conditions is tabulated in table ~\ref{gmm_ubm_sys}.
+
+\begin{table}[ht!]
+\centering
+\caption{GMM UBM based system performance}
+\label{gmm_ubm_sys}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Performance \\ Measure\end{tabular} & \multicolumn{1}{c|}{30 sec} & \multicolumn{1}{c|}{10 sec} & \multicolumn{1}{c|}{3 sec} \\ \hline
+$EER_{avg}$ & 28.3 & 32.5 & 39.9 \\ \hline
+$C_{avg}$ & 27.9 & 32.1 & 38.8 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Identification\\ Accuracy\end{tabular} & 64 & 49.1 & 38.1 \\ \hline
+\end{tabular}
+\end{table}
+\subsection{I-vector based System}
+As discussed in section~\ref{ivector} of chapter  1, the same procedure is followed to develop the I-vector based system. MATLAB environment is used to develop the system. First, the SDC feature vectors of 56 dimensions (including $C_{0}$, performed CMVN language-wise) each, are extracted from the speech signal, then the UBM (cluster size 512) was built using the feature vectors of approx. 2-hour data of each language. Then all the training feature vectors of each language were used to train the T-matrix, after that 400 dimension I-vectors for each utterance are extracted, LDA and WCCN are used to minimize within-class variance and maximize the between-class variance. The performance obtained using all three testing conditions is tabulated in table ~\ref{ivector_sys}.
+\begin{table}[ht!]
+\centering
+\caption{I-vector based system performance}
+\label{ivector_sys}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Performance \\ Measure\end{tabular} & \multicolumn{1}{c|}{30 sec} & \multicolumn{1}{c|}{10 sec} & \multicolumn{1}{c|}{3 sec} \\ \hline
+$EER_{avg}$ & 24.2 & 29.2 & 33.3 \\ \hline
+$C_{avg}$ & 23.9 & 28.9 & 32.6 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Identification\\ Accuracy\end{tabular} & 70.1 & 53 & 42 \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Feedforward Network Based System}
+As discussed in section~\ref{ffnn} of chapter  1, the same procedure is followed to develop the Feedforward network-based system. Python environment with Keras and TensorFlow libraries was used to develop the system. First, the SDC feature vectors of 56 dimensions (including $C_{0}$, performed CMVN language-wise) each, are extracted from the speech signal, then contexting of previous 10 and future 10 frames were used to provide 1176 dimension input to the neural network. 5 hidden layers with  2048 neurons were used with the Relu activation function. The output layer had 11 neurons with the softmax activation function. The network was trained using stochastic gradient descent with 0.001 learning rate.  The performance obtained using all three testing conditions is tabulated in table ~\ref{ffnn_sys}.
+\begin{table}[ht!]
+\centering
+\caption{Feedforward neural network based system performance}
+\label{ffnn_sys}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Performance \\ Measure\end{tabular} & \multicolumn{1}{c|}{30 sec} & \multicolumn{1}{c|}{10 sec} & \multicolumn{1}{c|}{3 sec} \\ \hline
+$EER_{avg}$ & 25.3 & 30.2 & 36.4 \\ \hline
+$C_{avg}$ & 24.8 & 30.09 & 35.9 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Identification\\ Accuracy\end{tabular} & 67 & 48 & 39 \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{X-vector Based System}
+As discussed in section~\ref{xvector} of chapter  1, the same procedure is followed to develop the X-vector based system. Kaldi speaker recognition 2016 recipe was used to develop the system. First, the MFCC feature vectors of 20 dimensions (including $C_{0}$, performed CMVN language-wise) each, are extracted from the speech signal. The architecture given in table~\ref{xvac_ar} of section~\ref{xvector} was used with dropout  of each hidden layer 0,0,0.0001,0.0001,0.0001,0 respectively. The network is trained with 40 epochs. After X-vector is extracted PLDA classifier was used for classification. The performance obtained using all three testing conditions are tabulated in table ~\ref{xvector_sys}.
+\begin{table}[ht!]
+\centering
+\caption{X-vector based system performance}
+\label{xvector_sys}
+\begin{tabular}{|l|l|l|l|}
+\hline
+\begin{tabular}[c]{@{}l@{}}Performance \\ Measure\end{tabular} & \multicolumn{1}{c|}{30 sec} & \multicolumn{1}{c|}{10 sec} & \multicolumn{1}{c|}{3 sec} \\ \hline
+$EER_{avg}$ & 18.2 & 23.1 & 30.1 \\ \hline
+$C_{avg}$ & 17.92 & 22.39 & 29.56 \\ \hline
+\begin{tabular}[c]{@{}l@{}}Identification\\ Accuracy\end{tabular} & 79 & 61 & 51 \\ \hline
+\end{tabular}
+\end{table}
+\section{Summary and Discussion}
+From the performance of all the systems, it has been observed that the X-vector system outperforms all the other systems. But still, the performance is far from perfect. The performance of the system degrades with the decrease in test utterance duration. Therefore in the future, there is a need for the development of efficient feature extraction and modeling techniques, which will provide a stable Spoken language recognition performance, even if the test duration is small.    

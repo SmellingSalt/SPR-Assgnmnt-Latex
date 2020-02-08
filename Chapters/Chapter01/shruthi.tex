@@ -1,0 +1,478 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+%\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{ragged2e}
+\usepackage{fancyvrb}
+\usepackage{fvextra}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{vmargin}
+\usepackage{graphicx}
+\usepackage{cite}
+
+%\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+%------------------------------------------
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+%------------------------------------
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{/}}
+\usepackage{verbatim}
+\usepackage{vmargin}
+\usepackage[square,numbers]{natbib}
+%\bibliographystyle{abbrvnat}
+\usepackage[colorinlistoftodos]{todonotes}
+\title{Speech Enhancement and Recognition}
+\author{K. T. Deepak }
+\date{January 2019}										% Date
+
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\let\thedate\@date
+\makeatother
+
+\pagestyle{fancy}
+\fancyhf{}
+%\rhead{\theauthor}
+\lhead{\thetitle}
+\cfoot{\thepage}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    %\includegraphics[scale = 0.75]{logo.jpg}\\[1.0 cm]	% University Logo
+%    \textsc{\Large BEL-CRL \newline\newline Dharwad }\\[2.0 cm]	% University Name
+	\textsc{\Large BEL-CRL Project Delivery Report}\\[0.5 cm]				% Course Code
+    \centering
+    \textsf{\Large On}\\[0.5 cm]	
+    \centering
+    \textbf{\Large Speech Enhancement and Automatic Speech Recognition}\\[0.5 cm]
+%    \vspace*{2 cm}
+%    \centering 
+%    \textsc{\large S.S.Aamir, 15EC10}\\[0.5 cm]
+%    \textsc{\large Sagar Raikar, 15EC11}\\[0.5 cm]
+%     \textsc{\large Rakshit Yadav, 15EC09}\\[0.5 cm]
+%    \vspace*{1 cm}
+    \centering
+%    \textsc{\small under the guidance of}\\[0.5 cm]
+    \textsc{\large by Dr. K T Deepak}\\[0.5 cm]
+    \textsc{\large Asst. Professor, Dept.of ECE}\\[0.5 cm]
+        \textsc{\large Indian Institute of Information Technology Dharwad}\\[0.5 cm]
+    \textsc{\small under the Supervision of Principle Investigator}\\[0.5 cm]
+    \textsc{\large Prof. S. R. M. Prasanna}\\[0.5 cm]
+    \textsc{\large Professor, Dept.of Electrical Engineering}\\[0.5 cm]
+        \textsc{\large Indian Institute of Technology Dharwad}            
+        
+%     \textsc{\large Dr. Sudhakar Modem}\\[0.5 cm]
+%    \textsc{\large Department of ECE}\\[0.5 cm]
+    	
+\end{titlepage}
+
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\listoffigures
+
+\listoftables
+\newpage
+\tableofcontents
+
+\pagebreak
+\section{Introduction}
+
+\textbf{Automatic Speech Recognition:}Automatic Speech Recognition (ASR) models have been built for the languages Mandarin,Pashto and Tamil using Kaldi toolkit.
+Hidden Markov Model-Gaussian Mixture Model (HMM-GMM)and TDNN based acoustic models are built.
+Language modeling is done using SRILM ()for Pashto and Tamil languages.For Mandarin language,language model is built using Kaldi-lm.
+
+\textbf{Speech Enhancement:} Speech Enhancement is done using deep learning techniques like Speech Enhancement Generative Adversarial networks (SEGAN) and DeepXi.
+The speech enhancement module is the front end to the ASR module.The ASR module used here is Aishell TDNN model.
+
+\section{Automatic Speech Recognition -ASR }
+\subsection{Aishell}
+\subsubsection{Aishell Dataset}
+AISHELL-2 corpus contains 1000 hours of clean reading-speech data.Raw data was recorded via three parallel acoustic channels - a high fidelity microphone (Mic), an Android smartphone (Android) and an iPhone (iOS).\\ 
+
+\textbf{Speaker information:}There are 1991 speakers partici-pated in the recording, including 845 male and 1146 female. Age of speaker ranges from 11 to over 40. There were 1293 speakers using Northern ones, 678 speakers usingSouthern ones and 20 speakers use other accents during recording.\\
+
+\textbf{Recording environment:}1347 speakers are recorded in a studio, while the rest are in a living room with natural reverberation.\\
+
+\textbf{Content of speech:}The content of the recording covers 8 major topics: voice commands such as IoT device control and digital sequential input, places of interest, entertainment, finance, technology, sports, English spellings and free speaking without specific topic. The total number of prompts is around half a million.\\
+\newpage
+\subsubsection{ASR}
+Results are reported on 2 different models: GMM-HMM and TDNN. The recipe used to build ASR can be found inside Kaldi egs/aishell2 directory. 
+
+\textbf{Acoustic Model:}
+
+\begin{enumerate}
+\item {\textbf{GMM-HMM:}} Monophone and Triphone models (tri1,tri2) models are built using MFCC with pitch feature extraction.Triphone models are trained using delta features for tri1 and tri2 and LDA+MLLT features for tri3 over MFCC with pitch features.
+
+\item \textbf{TDNN:} TDNN: TDNN model is trained using MFCC pitch features. tri3 alignments are given as inputs for TDNN training. Model is trained for 4 epochs.
+The scripts for TDNN training can be found in aishell2/local/chain/run-tdnn script.
+\end{enumerate}
+
+\textbf{Language Model:}A trigram language model was trained on 5.7 million-word speech transcripts from AISHELL-2. Out-of-vocabulary (OOV) words were mapped as <UNK>.
+The 3-order ARPA language model is trained using Kneser-Ney smoothing,
+with 516552 unigrams, 1498603 bigrams and 932475 trigrams, respectively.
+
+\subsubsection{Results}
+
+Development and test sets are also provided where Development set contains
+2500 utterances from 5 speakers and test set contains 5000 utterances from 10
+speakers. Each speaker contributed approximately half an hour of speech,
+covering 500 prompts.
+
+Results are tabulated in \ref{tab:aishell}.
+\begin{table} [h!]
+	\centering
+		\caption{Results for 1000 hours Aishell dataset}
+		
+\label{tab:aishell}
+\begin{tabular}{ | c || c || c | c | }
+\hline Models & dev-ios (CER) & test-ios (CER)\\ 
+\hline
+\hline Mono & 44.50 & 44.95\\
+%\hline 
+\hline tri1 & 21.70 & 22.98\\
+%\hline
+%\hline tri2 & 19.80 & 21.47\\
+%\hline
+\hline tri3 & 18.17 & 18.84\\
+%\hline
+\hline TDNN & 8.30 & 7.96\\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\subsection{Pashto}
+\subsubsection{Pashto Dataset}
+Pashto dataset used for building ASR is IARPA Babel Pashto Language Pack IARPA-babel104b-v0.4bY.
+The Pashto dataset used has conversational telephonic speech in four dialect regions of Afghanistan and Pakistan. The gender distribution among speakers is approximately 30 percent female, 70 percent male; speakers' ages range from 17 years to 70 years. Calls were made using different telephones (e.g., mobile, landline) from a variety of environments including the street, a home or office, a public place, and inside a vehicle.
+Audio data is 8kHz 8-bit a-law encoded audio in sphere format.It contains approximately 244 hours of Pashto conversational and scripted telephone speech collected in 2011 and 2012 along with corresponding transcripts.
+
+
+\subsubsection{ASR}
+Pashto conversational dataset was used for building ASR.
+We report our results on 3 different systems: GMM-HMM, DNN and TDNN. The recipe used to build the baseline systems can be found inside Kaldi egs/ directory. Most of the scripts are borrowed from timit and wsj recipes.
+
+
+\textbf{Acoustic Model:}
+
+\begin{enumerate}
+\item {\textbf{GMM-HMM:}} Monophone and Triphone models (tri1,tri2) models are built using MFCC feature extraction.Triphone models are trained using delta features for tri1 and tri2 and LDA+MLLT+SAT features for tri3 over MFCC features provided by steps/train-lda-mllt script in egs/timit/s5 directory.
+
+\item {\textbf{DNN:}} The training script for DNN can be found in steps/nnet2/train-tanh script. A fully-connected DNN with 3 hidden layers and 300 neurons per layer is trained.  LDA + MLLT + SAT tri3 alignment model is used as input to this network.Use steps/align-fmllr script to generate the alignments.The test set is decoded using this model with acoustic scale of 0.1.
+
+
+\item \textbf{TDNN:} The scripts for TDNN training can be found in egs/wsj/s5/local/chain. TDNN is modelled using run-tdnn script.tri3b alignments are provided for TDNN training.Training is done for 10 epochs.
+
+\end{enumerate}
+
+\textbf{Language Model:} SRILM toolkit was used to build language model, which can be found in kaldi/tools/srilm. For preparing the language model use egs/babel/run-1-main script.
+\newpage
+\subsubsection{Results}
+Results are tabulated in \ref{tab:Pashto}.
+\begin{table} [h!]
+	\centering
+		\caption{ Pashto Results }
+\label{tab:Pashto}
+\begin{tabular}{ | c || c | c | }
+\hline Models & WER\\ 
+\hline
+\hline Mono & 84.41\\
+%\hline 
+\hline tri1 & 73.39\\
+%\hline
+\hline tri2 & 70.87\\
+%\hline
+\hline tri3 & 67.92\\
+%\hline
+\hline sgmm(mmi) & 59.62\\
+%\hline
+\hline DNN & 63.59\\
+%\hline
+\hline TDNN & 43.36\\
+\hline
+
+\end{tabular}
+\end{table}
+
+\subsection{Librispeech}
+\subsubsection{Librispeech Dataset}
+LibriSpeech is a corpus of approximately 1000 hours of 16kHz read English speech, prepared by Vassil Panayotov with the assistance of Daniel Povey. The data is derived from read audiobooks from the LibriVox project, and has been carefully segmented and aligned. To select the audio recordings for inclusion into the corpus LibriVox’s API has been used to collect information about the readers, the audio book projects in which
+speakers participated, and the chapters of books that they read. Gender balance at
+the speaker level is also maintained.
+For each speaker in these training sets the amount ofspeech was limited to 25 minutes, in order to avoid major imbalancesinper-speaker audio duration.The dataset is freely available along with separately prepared language-model training data and pre-built language models.
+Data used for building ASR was of 360 hours.
+
+\subsubsection{ASR}
+ASR is built using HMM-GMM modeling, results are tabulated below.
+\newpage
+\begin{table} [h!]
+	\centering
+		\caption{ Librispeech Results(360 hours) }
+\label{tab:Pashto}
+\begin{tabular}{ | c || c | c | }
+\hline Language Model & WER\\ 
+\hline
+\hline fglarge-dev-clean & 7.44\\
+%\hline 
+\hline tglarge-dev-clean & 8.00\\
+%\hline
+\hline tgmed-dev-clean & 9.53\\
+%\hline
+\hline tgsmall-dev-clean & 10.85\\
+%\hline
+\hline fglarge-test-clean & 7.79\\
+%\hline
+\hline tglarge-test-clean & 8.10\\
+\hline tgmed-test-clean & 9.73\\
+%\hline
+\hline tgsmall-test-clean & 10.89\\
+%\hline
+\hline fglarge-dev-other & 26.95\\
+%\hline 
+\hline tglarge-dev-other & 28.22\\
+%\hline
+\hline tgmed-dev-other & 31.03\\
+%\hline
+\hline tgsmall-dev-other & 33.13\\
+%\hline
+\hline fglarge-test-other & 28.66\\
+%\hline 
+\hline tglarge-test-other & 29.75\\
+%\hline
+\hline tgmed-test-other & 33.00\\
+%\hline
+\hline tgsmall-test-other & 33.77\\
+\hline
+
+\end{tabular}
+\end{table}
+
+\subsection{Tamil}
+\subsubsection{Tamil Dataset}
+Pashto dataset used for building ASR is IARPA Babel Pashto Language Pack IARPA-babel204b-v1.1b.
+It contains approximately 350 hours of Tamil conversational and scripted telephone speech collected in 2012 and 2013 along with corresponding transcripts.The Tamil speech in this release represents that spoken in the Northern, Central, Southern and Western dialect regions of the Indian state of Tamil Nadu. The gender distribution among speakers is approximately equal; speakers' ages range from 16 years to 65 years. Calls were made using different telephones (e.g., mobile, landline) from a variety of environments including the street, a home or office, a public place, and inside a vehicle.
+Audio data is presented as 8kHz 8-bit a-law encoded audio in sphere format and 48kHz 24-bit PCM encoded audio in wav format.
+
+
+\subsubsection{ASR}
+Tamil conversational dataset was used for building ASR.
+We report our results on 3 different systems: GMM-HMM and TDNN. The recipe used to build the baseline systems can be found inside Kaldi egs/ directory. Most of the scripts are borrowed from timit and wsj recipes.
+
+\newpage
+\textbf{Acoustic Model:}
+
+\begin{enumerate}
+\item {\textbf{GMM-HMM:}} Monophone and Triphone models (tri1,tri2) models are built using MFCC feature extraction.Triphone models are trained using delta features for tri1 and tri2 and LDA+MLLT+SAT features for tri3 over MFCC features provided by steps/train-lda-mllt script in egs/timit/s5 directory.
+
+\item {\textbf{DNN:}} The training script for DNN can be found in steps/nnet2/train-tanh script. A fully-connected DNN with 3 hidden layers and 300 neurons per layer is trained.  LDA + MLLT + SAT tri3 alignment model is used as input to this network.Use steps/align-fmllr script to generate the alignments.The test set is decoded using this model with acoustic scale of 0.1.
+
+
+\item \textbf{TDNN:} The scripts for TDNN training can be found in egs/wsj/s5/local/chain. TDNN is modelled using run-tdnn script.tri3b alignments are provided for TDNN training.Training is done for 10 epochs.
+
+\end{enumerate}
+
+\textbf{Language Model:} SRILM toolkit was used to build language model, which can be found in kaldi/tools/srilm. For preparing the language model use egs/babel/run-1-main script.
+
+\subsubsection{Results}
+Results are tabulated in \ref{tab:Tamil}.
+\begin{table} [h!]
+	\centering
+		\caption{ Tamil Results }
+\label{tab:Tamil}
+\begin{tabular}{ | c || c | c | }
+\hline Models & WER\\ 
+\hline
+%\hline Mono & 84.41\\
+%\hline 
+\hline tri1 & 85.55\\
+%\hline
+\hline tri2 & 84.34\\
+%\hline
+\hline tri3 & 67.92\\
+%\hline
+%\hline
+\hline TDNN & 66.77\\
+\hline
+
+\end{tabular}
+\end{table}
+
+\section{Speech Enhancement }
+Speech Enhancement for Aishell dataset is implemented using DeepXi and Segan.
+
+\subsection{SEGAN}
+GANs are generative models that learn to map samples z from some prior distribution Z to samples x from another distribution X, which is one of the training examples (e.g., images, audio, etc.). The component within the GAN structure that performs the mapping is called the generator (G), and its main task is to learn an effective mapping that can imitate the real data distribution to generate novel samples related to those of the training set.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=11cm]{GAN_concept.jpg}
+\caption{GAN concept}
+\label{fig:GAN concept}
+\end{figure}
+
+The concept of GAN is shown in the figure \ref{fig:GAN concept}.Importantly, G does so not by memorizing input-output pairs, but by mapping the data distribution characteristics to the manifold defined in our priorZ.The way in which G learns to do the mapping is by means of an adversarial training, where we have another component,called the discriminator (D). D is typically a binary classifier,and its inputs are either real samples, coming from the dataset that G is imitating, or fake samples, made up by G. \\
+The adversarial characteristic comes from the fact that D has to classify the samples coming from X as real, whereas the samples coming from G,ˆX, have to be classified as fake. This leads to G trying to fool D, and the way to do so is that G adapts its parameters such that D classifies G’s output as real.\\ 
+During back-propagation, D gets better at finding realistic features in its input and, in turn, G corrects its parameters to move towards the real data manifold described by the training data. \\
+G is composed of 22 one-dimensional strided convolutional layers of filter width 31 and strides of N= 2. The amount of filters per layer increases so that the depth gets larger as the width (duration of signal intime) gets narrower.The network D follows the same one-dimensional convolu-tional structure as G’s encoder stage, and it fits to the conven-tional topology of a convolutional classification network.\\ 
+
+\subsubsection{Dataset}
+
+Aishell dataset comprising of speech of 3 different regions of China(North,South,Other Areas) of duration 23 hours was used for training.Babble and white noise of SNR 20dB was added to the speech data. The test data had 1500 data files of approximately 1.6hours,each added with babble and white noises of SNR 20 dB.
+
+\subsubsection{Results}
+Results obtained for the speech enhancement using SEGAN for additive noise like white and babble is summarised in the below Table \ref{tab: SEGAN Results}.It can be seen that SEGAN works better for stationary noises than non-stationary noises.
+
+\begin{table} [h!]
+       \centering
+		\caption{ SEGAN Results }
+\label{tab: SEGAN Results}
+\begin{tabular}{ | c || c || c | }
+\hline Method & Noise & CER\\ 
+\hline
+\hline Segan & White & 10.85 \\
+\hline Noisy & White & 14.42 \\
+\hline Segan & Babble & 10.87 \\
+\hline Noisy & Babble & 11.37\\
+\hline
+\end{tabular}
+\end{table}
+
+
+%\newpage
+\subsection{DeepXi}
+Deep Xi is a residual long short-term memory (ResLSTM) network a prioriSNR estimator. Here, it is evaluated as a front-end for robust ASR. Deep Xi pre-processes the noisy speech before it is given to the back-end of the ASR system. Aishell ASR is used as the back-end system.
+The a priori SNR estimation of the noisy speech magnitude spectra is found using DeepXi. The estimated clean speech magnitude spectra is found by applying the gain function of an MMSE approach as shown in figure \ref{fig:DeepXi}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=11cm]{deepxi.png}
+\caption{DeepXi}
+\label{fig:DeepXi}
+\end{figure}
+
+Different gain functions used are:
+\begin{enumerate}
+\item MMSE-STSA Minimum Mean-Square Error Short-Time Spectral Amplitude estimation.
+\item MMSE-LSA Minimum mean square error short time log spectral amplitude estimation.
+\item IBM Ideal Binary Mask.
+\item IRM Ideal Ratio Mask.
+\item WF Wiener Filter.
+\item CWF Complementary Wiener Filter.
+\end{enumerate}
+
+\subsubsection{Dataset}
+The train-clean-100 set from the Librispeech corpus(28,539 utterances) was used as the clean speech training set.The QUT-NOISE dataset, the Nonspeech dataset, the Environmental Background Noise dataset, the noiseset from the MUSAN corpus, multiple FreeSound packs3,and coloured noise recordings (with alpha value ranging from-2 to 2 in increments of 0.25) were included in the noise train-ing set (2382recordings). All clean speech and noise signals  were single-channel, with a sampling frequency of 16kHz. Eachclean speech signal was mixed with a random section of a randomly selected noise signal at one of the following randomly selected SNR levels: -10 to 20 dB, in 1 dB increments.
+
+Pretrained model available in the link  has been used for testing.
+The test data had 1500 data files of approximately 1.6hours, each added with babble and white noises of SNR 20 dB.
+
+\subsubsection{Results}
+
+\begin{table} [h!]
+	\centering
+		\caption{ Deepxi Results }
+\label{tab:Deepxi}
+\begin{tabular}{ | c || c || c || c | c | }
+\hline Models & Noise & Gain & CER\\ 
+\hline
+\hline  & White &  & 14.42 \\
+%\hline 
+\hline  DeepXi & White & CWF & 12.72\\
+%\hline
+\hline  &  & MMSE-LSA & 13.17\\
+%\hline
+\hline  &  & MMSE-STSA & 13.18\\
+%\hline
+\hline  &  & IBM & 50.25\\
+%\hline
+\hline  &  & IRM & 13.17\\
+%\hline
+\hline  &  & WF & 17.23\\
+\hline
+\hline  & Babble & & 11.37\\
+%\hline
+\hline DeepXi & Babble & CWF & 11.65\\
+%\hline
+\hline  &  & MMSE-LSA & 11.89\\
+%\hline
+\hline  &  & MMSE-STSA & 11.60\\
+%\hline
+\hline  &  & IBM & 26.06\\
+%\hline
+\hline  &  & IRM & 11.50\\
+%\hline
+\hline  &  & WF & 13.87\\
+\hline
+
+\end{tabular}
+\end{table}
+
+It can be seen in Table \ref{tab:Deepxi} that DeepXi works better for stationary noises than non-stationary noises.
+\newpage
+\subsection{Speech Enhancement Results}
+
+\begin{table} [h!]
+	\centering
+		\caption{ Speech Enhancement Results }
+\label{tab: Speech Enhancement Results}
+\begin{tabular}{ | c || c | c | }
+\hline Method & Average CER\\ 
+\hline
+\hline Noisy & 12.895\\
+%\hline
+\hline Segan & 10.86 \\
+%\hline 
+\hline DeepXi(CWF) & 12.18\\
+\hline
+\end{tabular}
+\end{table}
+
+It can be seen in Table \ref{tab: Speech Enhancement Results}  that SEGAN works better for both stationary and non-stationary noise when comparesd to DeepXi.
+
+%\bibliography{reference}
+
+\bibliographystyle{IEEEbib}
+%\bibliography{My_References}
+\newpage
+\section{References}
+
+[1] Jiayu Du and Xingyu Na and Xuechen Liu and Hui Bu,"AISHELL-2: Transforming Mandarin      	ASR Research Into Industrial Scale,"ArXiv,Vol.abs/1808.10583,2018.
+
+[2] Pascual and Santiago and Bonafonte Antonio and Serr{\`a} Joan,"SEGAN: Speech 				Enhancement Generative Adversarial Network,"arXiv preprint arXiv:1703.09452,2017.
+
+[3] Aaron Nicolson and Kuldip K. Paliwal,"Deep Xi as a Front-End for Robust Automatic 			Speech Recognition,"ArXiv, vol.abs/1906.07319,2019.
+
+[4] Srivastava, Brij and Sitaram, Sunayana and Mehta, Rupesh and Mohan, Krishna and 			Matani, Pallavi and Satpal, Sandeepkumar and Bali, Kalika and Srikanth, 					Radhakrishnan and Nayak, Niranjan,"Interspeech 2018 Low Resource Automatic Speech 			Recognition Challenge for Indian Languages," 10.21437/SLTU.2018-3,2018.
+
+[5] Vassil Panayotov, Guoguo Chen, Daniel Povey, Sanjeev Khudanpur ,"Librispeech: An ASR 	corpus based on public domain audio books,"  10.1109/ICASSP.2015.7178964,2015.
+
+
+
+\vspace{-100mm}
+
+\end{document}
