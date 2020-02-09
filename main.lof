@@ -1,0 +1,19 @@
+\babel@toc {american}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Basic block diagram of language identification/verification system.\relax }}{4}{figure.caption.10}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Basic block diagram of language diarization system~\cite {lyu2013language1}.\relax }}{5}{figure.caption.12}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Block diagram of MFCC extraction.\relax }}{17}{figure.caption.29}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The power spectral density of the original speech signal and pre-emphasized speech signal sampled at 8000 Hz.\relax }}{17}{figure.caption.31}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Shape of Mel filter bank for a 24 filter system with sampling frequency of 8000 Hz .\relax }}{20}{figure.caption.41}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces SDC feature extraction at $n^{th}$ frame, $z-d-p-k=7-1-3-7$.\relax }}{23}{figure.caption.54}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Basic block diagram of GMM training.\relax }}{25}{figure.caption.64}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces (a) The training vectors (x\IeC {\textquoteright }s) are probabilistically mapped into the UBM (prior) mixtures. (b) The adapted mixture parameters are derived using the statistics of the new data and the UBM (prior) mixture parameters. The adaptation is data dependent, so UBM (prior) mixture parameters are adapted by different amounts~\cite {reynolds1995speaker}.\relax }}{30}{figure.caption.81}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Basic block diagram of language identification using GMM.\relax }}{30}{figure.caption.83}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Basic block diagram of language identification using GMM-UBM.\relax }}{31}{figure.caption.87}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Basic block diagram of language identification using i-vector.\relax }}{33}{figure.caption.92}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Feedforward network based classifier~\cite {lopez2016use}.\relax }}{38}{figure.caption.126}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Bottleneck feature extraction~\cite {zhang2018language}.\relax }}{39}{figure.caption.129}
+\contentsline {figure}{\numberline {2.12}{\ignorespaces Bottleneck feature-I-vector based language identification system~\cite {jiang2014deep}.\relax }}{40}{figure.caption.130}
+\contentsline {figure}{\numberline {2.13}{\ignorespaces Computation in TDNN with sub-sampling (red) and without sub-sampling (blue+red)~\cite {snyder2018spoken}.\relax }}{40}{figure.caption.132}
+\addvspace {10\p@ }

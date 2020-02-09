@@ -1,0 +1,55 @@
+\babel@toc {american}{}
+\contentsline {chapter}{List of Figures}{ii}{dummy.2}
+\contentsline {chapter}{List of Tables}{iii}{dummy.4}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.6}
+\contentsline {section}{\numberline {1.1}Speech Recognition}{1}{section.7}
+\contentsline {section}{\numberline {1.2}Language identification, Language verification and Language diarization}{3}{section.8}
+\contentsline {subsection}{\numberline {1.2.1}Language identification and verification}{3}{subsection.9}
+\contentsline {subsection}{\numberline {1.2.2}Language diarization}{5}{subsection.11}
+\contentsline {section}{\numberline {1.3}Major milestones for language recognition}{6}{section.13}
+\contentsline {section}{\numberline {1.4}Databases for spoken language recognition}{10}{section.16}
+\contentsline {subsection}{\numberline {1.4.1}Oregon graduate institute telephone speech corpus (OGI-TS)}{12}{subsection.17}
+\contentsline {subsubsection}{\numberline {1.4.1.1}OGI-TS 22 language corpus}{13}{subsubsection.18}
+\contentsline {subsection}{\numberline {1.4.2}LDC callfriend telephone speech corpus}{13}{subsection.19}
+\contentsline {subsection}{\numberline {1.4.3}NIST Language recognition corpus (NIST LRE)}{13}{subsection.20}
+\contentsline {section}{\numberline {1.5}Performance measure for language recognition}{14}{section.24}
+\contentsline {subsection}{\numberline {1.5.1}Average detection cost($C_{avg}$)}{14}{subsection.25}
+\contentsline {section}{\numberline {1.6}Summery and Discussion}{15}{section.26}
+\contentsline {chapter}{\numberline {2}Acoustic feature extraction and classification techniques used for Spoken language recognition}{16}{chapter.27}
+\contentsline {section}{\numberline {2.1}Mel frequency cepstral coefficients (MFCC)}{16}{section.28}
+\contentsline {subsection}{\numberline {2.1.1}Pre-emphasis}{17}{subsection.30}
+\contentsline {subsection}{\numberline {2.1.2}Frame blocking}{18}{subsection.33}
+\contentsline {subsection}{\numberline {2.1.3}Windowing}{18}{subsection.34}
+\contentsline {subsection}{\numberline {2.1.4}DFT}{19}{subsection.37}
+\contentsline {subsection}{\numberline {2.1.5}Power spectrum}{19}{subsection.39}
+\contentsline {subsection}{\numberline {2.1.6}Mel filter warping}{19}{subsection.40}
+\contentsline {subsection}{\numberline {2.1.7}log(.)}{20}{subsection.46}
+\contentsline {subsection}{\numberline {2.1.8}Inverse DCT}{20}{subsection.47}
+\contentsline {section}{\numberline {2.2}Delta and Delta-Delta cepstra ($\Delta $ and $\Delta -\Delta $)}{21}{section.49}
+\contentsline {section}{\numberline {2.3}Shifted delta coefficients (SDC)}{22}{section.53}
+\contentsline {section}{\numberline {2.4}Gaussian Mixture Model}{23}{section.57}
+\contentsline {subsection}{\numberline {2.4.1}Training of GMMs}{25}{subsection.62}
+\contentsline {subsubsection}{\numberline {2.4.1.1}Expectation Maximization Algorithm}{26}{subsubsection.65}
+\contentsline {subsubsection}{\numberline {2.4.1.2}Maximum a posteriori (MAP) Parameter estimation}{28}{subsubsection.75}
+\contentsline {subsection}{\numberline {2.4.2}Testing of GMMs}{30}{subsection.82}
+\contentsline {section}{\numberline {2.5}Gaussian Mixture Model and Universal Background Model (GMM-UBM)}{31}{section.86}
+\contentsline {section}{\numberline {2.6}I-vector based language identification system}{32}{section.89}
+\contentsline {subsection}{\numberline {2.6.1}T Matrix training}{35}{subsection.96}
+\contentsline {subsection}{\numberline {2.6.2}I-vector estimation}{35}{subsection.106}
+\contentsline {subsection}{\numberline {2.6.3}Cosine kernel scoring}{36}{subsection.108}
+\contentsline {subsection}{\numberline {2.6.4}Intersession compensation techniques}{36}{subsection.110}
+\contentsline {subsubsection}{\numberline {2.6.4.1}Linear discriminant analysis (LDA)}{36}{subsubsection.111}
+\contentsline {subsubsection}{\numberline {2.6.4.2}Within class covariance normalization (WCCN)}{37}{subsubsection.116}
+\contentsline {subsubsection}{\numberline {2.6.4.3}Nuisance attribute projection (NAP)}{38}{subsubsection.121}
+\contentsline {section}{\numberline {2.7}Feedforward network based model}{38}{section.125}
+\contentsline {section}{\numberline {2.8}Bottleneck feature I-vector model}{39}{section.128}
+\contentsline {section}{\numberline {2.9}X-vector based modeling}{40}{section.131}
+\contentsline {chapter}{\numberline {3}Delivered System Description }{42}{chapter.134}
+\contentsline {section}{\numberline {3.1}Database Description}{42}{section.135}
+\contentsline {section}{\numberline {3.2}System Description}{42}{section.137}
+\contentsline {subsection}{\numberline {3.2.1}GMM Based System}{42}{subsection.138}
+\contentsline {subsection}{\numberline {3.2.2}GMM-UBM Based System}{43}{subsection.140}
+\contentsline {subsection}{\numberline {3.2.3}I-vector based System}{43}{subsection.142}
+\contentsline {subsection}{\numberline {3.2.4}Feedforward Network Based System}{44}{subsection.144}
+\contentsline {subsection}{\numberline {3.2.5}X-vector Based System}{44}{subsection.146}
+\contentsline {section}{\numberline {3.3}Summary and Discussion}{44}{section.148}
