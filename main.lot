@@ -1,13 +1,11 @@
 \babel@toc {american}{}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {1.1}{\ignorespaces A summary on different studies made on language recognition.\relax }}{11}{table.caption.14}
-\contentsline {table}{\numberline {1.2}{\ignorespaces A summary on different studies made on language recognition.\relax }}{12}{table.caption.15}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces The embedding DNN architecture~\cite {snyder2018spoken}.\relax }}{41}{table.caption.133}
+\contentsline {table}{\numberline {2.1}{\ignorespaces The embedding DNN architecture~\cite {snyder2018spoken}.\relax }}{27}{table.caption.114}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Speech data available in each language\relax }}{42}{table.caption.136}
-\contentsline {table}{\numberline {3.2}{\ignorespaces GMM based system performance\relax }}{43}{table.caption.139}
-\contentsline {table}{\numberline {3.3}{\ignorespaces GMM UBM based system performance\relax }}{43}{table.caption.141}
-\contentsline {table}{\numberline {3.4}{\ignorespaces I-vector based system performance\relax }}{43}{table.caption.143}
-\contentsline {table}{\numberline {3.5}{\ignorespaces Feedforward neural network based system performance\relax }}{44}{table.caption.145}
-\contentsline {table}{\numberline {3.6}{\ignorespaces X-vector based system performance\relax }}{44}{table.caption.147}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Speech data available in each language\relax }}{28}{table.caption.117}
+\contentsline {table}{\numberline {3.2}{\ignorespaces GMM based system performance\relax }}{29}{table.caption.120}
+\contentsline {table}{\numberline {3.3}{\ignorespaces GMM UBM based system performance\relax }}{29}{table.caption.122}
+\contentsline {table}{\numberline {3.4}{\ignorespaces I-vector based system performance\relax }}{29}{table.caption.124}
+\contentsline {table}{\numberline {3.5}{\ignorespaces Feedforward neural network based system performance\relax }}{30}{table.caption.126}
+\contentsline {table}{\numberline {3.6}{\ignorespaces X-vector based system performance\relax }}{30}{table.caption.128}
